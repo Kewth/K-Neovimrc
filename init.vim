@@ -126,7 +126,7 @@ let g:ycm_key_list_previous_completion = ['<C-p>']
 let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
 let g:ycm_complete_in_strings = 1                           " 在字符串输入中也能补全
 let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
-let g:ycm_show_diagnostics_ui = 1    " 仅对C-family有效
+" let g:ycm_show_diagnostics_ui = 1    " 仅对C-family有效
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |           " 回车即选中当前项
 nnoremap <C-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=1                 " 从第1个键入字符就开始罗列匹配项
@@ -265,7 +265,7 @@ let g:ale_sign_warning = '⚠ '
 let g:ale_enabled = 1
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查,etc.
 let g:ale_linters = {
-\   'c++': ['clang -pedantic'],
+\   'c++': ['clang -pedantic -Wall'],
 \   'c': ['clang'],
 \   'python': ['pylint'],
 \   'markdown' : ['mdl'],
@@ -629,6 +629,9 @@ function To_buffer() " {{{
 	elseif(_line == 11)
 		NERDTree
 	elseif(_line == 12)
+		vs
+		terminal
+	elseif(_line == 13)
 		quit!
 	endif
 endfunction "}}}
@@ -655,8 +658,9 @@ function Welcome() " {{{
 	call append(8,'> To clear this buffer')
 	call append(9,'> To open LeaderF which is used to serach files')
 	call append(10,'> To open NerdTree which is used to serach files on a tree')
-	call append(11,'> To exit neovim(or press q)')
-	call append(12,'Press enter(ctrl-m) at some lines to do something')
+	call append(11,'> To open terminal')
+	call append(12,'> To exit neovim(or press q)')
+	call append(13,'Press enter(ctrl-m) at some lines to do something')
 	set nomodifiable
 	nnoremap <buffer> <CR> :call To_buffer()<CR>
 	nnoremap <buffer> q :q!<CR>

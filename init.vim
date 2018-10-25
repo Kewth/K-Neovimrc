@@ -1,5 +1,6 @@
 scripte utf-8
 source ~/.config/nvim/_plug.vim
+source ~/.config/nvim/qt.vim
 " 各种set {{{
 " 外观 {{{
 " 语法高亮
@@ -128,7 +129,7 @@ let g:ycm_complete_in_strings = 1                           " 在字符串输入
 let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
 " let g:ycm_show_diagnostics_ui = 1    " 仅对C-family有效
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |           " 回车即选中当前项
-nnoremap <C-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
+nnoremap <C-j> <Cmd>YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=1                 " 从第1个键入字符就开始罗列匹配项
 " let g:ycm_global_ycm_extra_conf = '/home/kewth/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' " 配置全局路径
 let g:ycm_global_ycm_extra_conf = '/home/kewth/.config/nvim/plugged/YouCompleteMe/.ycm_extra_conf.py' " 配置全局路径
@@ -137,9 +138,9 @@ let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <F4> :YcmDiags<CR>
+nnoremap <leader>gl <Cmd>YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf <Cmd>YcmCompleter GoToDefinition<CR>
+nnoremap <F4> <Cmd>YcmDiags<CR>
 " inoremap <c-o> <c-x><c-o>
 let g:ycm_semantic_triggers = {
 \     'c' : ['->', '  ', '.', ' ', '(', '[', '&'],
@@ -220,7 +221,7 @@ endfunction
 function Airline_Change_Theme_Timer(timer) 
 	:call Airline_Change_Theme()
 endfunction
-nnoremap <silent> <Leader>ai :call Airline_Change_Theme()<CR>
+nnoremap <silent> <Leader>ai <Cmd>call Airline_Change_Theme()<CR>
 " 自动更换主题
 " exe 'autocmd CursorHold * : call Airline_Change_Theme()' 
 " exe 'autocmd BufWritePost * : call Airline_Change_Theme()' 
@@ -231,11 +232,11 @@ nnoremap <silent> <Leader>ai :call Airline_Change_Theme()<CR>
 let Tlist_WinWidth=30        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
 let Tlist_Use_Left_Window=1 "在Vim窗口左侧显示taglist窗口
-nmap <Leader>ta :Tlist<CR>
+nmap <Leader>ta <Cmd>Tlist<CR>
 " }}}
 "MarkdownPreview {{{
-nnoremap <Leader>md :MarkdownPreview<CR>
-nnoremap <Leader>MD :MarkdownPreviewStop<CR>
+nnoremap <Leader>md <Cmd>MarkdownPreview<CR>
+nnoremap <Leader>MD <Cmd>MarkdownPreviewStop<CR>
 " }}}
 " Vim-Markdown {{{
 " 代码块高亮
@@ -274,17 +275,20 @@ let g:ale_linters = {
 \   'Vim' : ['vint'],
 \ }
 " 打开或关闭
-nnoremap <Leader>ale :ALEEnable<CR>
-nnoremap <Leader>ALE :ALEDisable<CR>
+nnoremap <Leader>ale <Cmd>ALEEnable<CR>
+nnoremap <Leader>ALE <Cmd>ALEDisable<CR>
+" 跳转
+nnoremap <Leader>aa <Cmd>ALENext<CR>
+nnoremap <Leader>AA <Cmd>ALEPrevious<CR>
 " }}}
 " LeaderF {{{
-" nmap <Leader>fi :LeaderfFile<CR>
-nnoremap <Leader>fu :LeaderfFunctionAll<CR>
-nnoremap <Leader>bt :LeaderfBufTagAll<CR>
-nnoremap <Leader>bu :LeaderfBufferAll<CR>
-nnoremap <Leader>co :LeaderfColorscheme<CR>
-nnoremap <Leader>fm :LeaderfMru<CR>
-nnoremap <Leader>li :LeaderfLineAll<CR>
+" nmap <Leader>fi <Cmd>LeaderfFile<CR>
+nnoremap <Leader>fu <Cmd>LeaderfFunctionAll<CR>
+nnoremap <Leader>bt <Cmd>LeaderfBufTagAll<CR>
+nnoremap <Leader>bu <Cmd>LeaderfBufferAll<CR>
+nnoremap <Leader>co <Cmd>LeaderfColorscheme<CR>
+nnoremap <Leader>fm <Cmd>LeaderfMru<CR>
+nnoremap <Leader>li <Cmd>LeaderfLineAll<CR>
 let g:Lf_CommandMap = {'<F5>': ['<C-l>']}
 let g:Lf_ShortcutF = '<Leader>fi'
 let g:Lf_NumberOfHighlight = 200
@@ -378,8 +382,8 @@ function! D_open ()
 	nmap p <PageUp>
 	nmap n <End>
 	nmap o <PageDown>
-	nnoremap <Leader>d :call D_another()<CR>
-	nnoremap <Esc> :call D_close()<CR>
+	nnoremap <Leader>dr <Cmd>call D_another()<CR>
+	nnoremap <Esc> <Cmd>call D_close()<CR>
 endfunction
 
 function! D_close ()
@@ -393,10 +397,10 @@ function! D_close ()
 	nunmap n
 	nunmap o
 	nunmap <Esc>
-	nnoremap <Leader>d :call D_open()<CR>
+	nnoremap <Leader>dr <Cmd>call D_open()<CR>
 endfunction
 
-nnoremap <Leader>d :call D_open()<CR>
+nnoremap <Leader>dr <Cmd>call D_open()<CR>
 " }}}
 " Gitgutter {{{
 set updatetime=100
@@ -419,8 +423,8 @@ nmap \\ gcc
 vmap \ gc
 " }}}
 " NERDTree {{{
-nnoremap <Leader>tf :NERDTreeFind<CR>
-nnoremap <Leader>te :NERDTree<CR>
+nnoremap <Leader>tf <Cmd>NERDTreeFind<CR>
+nnoremap <Leader>te <Cmd>NERDTree<CR>
 " 在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
 " exe 'autocmd VimEnter * : NERDTree'
 " 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）
@@ -431,7 +435,7 @@ let NERDTreeWinSize=25
 let NERDTreeShowBookmarks=1
 " }}}
 " UndoTree {{{
-nnoremap <Leader>un :UndotreeToggle<CR>
+nnoremap <Leader>un <Cmd>UndotreeToggle<CR>
 if has('persistent_undo')
     set undodir=~/.undodir/
     set undofile
@@ -475,8 +479,26 @@ let g:p_edit_files = {
 			\ 'plan': '/home/kewth/Desktop/plan.md',
 			\ 'diary': '/home/kewth/Desktop/plan.md',
 			\}
-nnoremap <Leader>plan :tabnew /home/kewth/Desktop/plan.md<CR>:EditPlan<CR>
+nnoremap <Leader>plan <Cmd>tabnew /home/kewth/Desktop/plan.md<CR>:EditPlan<CR>
 " }}}
+" GDB {{{
+noremap <Leader>gdb <Cmd>!g++ % -Wall -g<CR>:GdbStart gdb -q a.out<CR><CR><CR>b main<CR>run<CR><C-\><C-n><C-w>k:call Gdb_begin()<CR>
+function Gdb_add_break()
+	let break_point = line('.')
+	normal! <C-w>j1
+endfunction
+function Gdb_begin()
+	nnoremap \n <Cmd>GdbNext<CR>
+	nnoremap \s <Cmd>GdbStep<CR>
+	nnoremap \c <Cmd>GdbContinue<CR>
+	nnoremap \u <Cmd>GdbUntil<CR>
+	" nnoremap \b <Cmd>call Gdb_add_break()<CR>
+endfunction
+" }}}
+" clever-f
+let g:clever_f_across_no_line = 1
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
 " }}}
 " color {{{
 syntax enable
@@ -494,187 +516,104 @@ set foldmethod=marker " 按标记折叠
 " set foldmethod=syntax " 按语法高亮来折叠
 " set foldmethod=indent " 更多的缩进表示更高级别的折叠(这个似乎效果好一些)
 " 用<CR>自动折叠,其实就是za
-nnoremap <silent> <CR> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" nnoremap <silent> <CR> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " 打开/关闭所有折叠
 nnoremap <silent> zo zR
 nnoremap <silent> zc zM
-" }}} 
+" }}}
 " 各种map {{{
-" 模仿MS Windows中的快捷键 {{{
-" vnoremap <C-c> "+y
-" nnoremap <C-c> "+y
-" nnoremap <C-c><C-c> "+yy
-" vnoremap <C-z> "+d
-" nnoremap <C-z> "+d
-" nnoremap <C-v> "+p
-" vnoremap <C-v> "+p
-" inoremap <C-v> <Left><C-o>"+p
-" noremap <C-v> "+p
-" nmap <C-a> ggvG$
-" }}}
-
-" 退出 {{{
-nnoremap <Leader>w :up<CR>
-nnoremap <Leader>wq :wq<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>rq : q!<CR>
-" }}}
-
 " 窗口操作 {{{
-nnoremap <Leader>kk :split<CR>
-nnoremap <Leader>jj :split<CR><C-w>j
-nnoremap <Leader>hh :vsplit<CR>
-nnoremap <Leader>ll :vsplit<CR><C-w>l
-nnoremap <Leader>bo :botright copen 8 <CR>
+" practice
+nnoremap <Leader>w <Cmd>up<CR>
+nnoremap <C-w> <Cmd>echo 'fuck'<CR>
+nnoremap <Tab> <C-w>
+nnoremap <Tab><Tab> <Tab>
+nnoremap <Leader>bo <Cmd>botright copen 8 <CR>
 " }}}
-
 " Terminal {{{
-nnoremap <Leader>ba :terminal<CR>:set nonu<CR>a
+nnoremap <Leader>ba <Cmd>terminal<CR>:set nonu<CR>a
 tnoremap <C-\> <C-\><C-n>
-nnoremap <Leader>ca :ConqueTerm bash<CR>
+nnoremap <Leader>ca <Cmd>ConqueTerm bash<CR>
 " }}}
-
 " 分页操作 {{{
-nnoremap <Leader><Tab><Tab> :tabnew<CR>
-nnoremap <Leader><Tab>] :tabmove +1<CR>
-nnoremap <Leader><Tab>[ :tabmove -1<CR>
+nnoremap <Leader><Tab><Tab> <Cmd>tabnew<CR>
+nnoremap <Leader><Tab>] <Cmd>tabmove +1<CR>
+nnoremap <Leader><Tab>[ <Cmd>tabmove -1<CR>
 " }}}
-
-" 插入模式(等)替换键 {{{
-" 模仿terminal快捷键
-inoremap <C-d> <Del>
-" }}}
-
 " 光标移动 {{{
 " 屏幕行移动
-noremap <C-n> gj 
+noremap <C-n> gj
 noremap <C-p> gk
 " }}}
-
-" 窗口大小 {{{
-set noignorecase
-if has('gui_running')
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-  set lines=999 columns=999
-else
-endif
-" }}}
-
 " 目录设置 {{{
-nnoremap <Leader>cd :cd %:p:h<CR>
+nnoremap <Leader>cd <Cmd>cd %:p:h<CR>
 " 自动进入当前目录
 cd %:p:h
 " }}}
-
 " 命令行 {{{
 nnoremap : q:a
 " }}}
-
 " }}}
-" Gvim/neovim {{{
-" if has('gui_running')
-	" 移除菜单栏和工具栏
-	" <span style="font-size:18px;">:set guioptions-=m  "remove menu bar
-	set guioptions-=T  "remove toolbar
-	set guioptions-=r  "remove right-hand scroll bar
-	set guioptions-=L  "remove left-hand scroll bar</span>
-	set guioptions-=m
-	" 字体
-	set guifont=Ubuntu\ Mono\ Italic\ 14
-	" alt大法 {{{
-	" 光标移动
-	cmap <a-j> <Esc>j
-	cmap <a-k> <Esc>j
-	imap <a-j> <Esc>j
-	map <a-j> <Esc>j
-	imap <a-k> <Esc>k
-	map <a-k> <Esc>k
-	imap <a-h> <Esc>h
-	map <a-h> <Esc>h
-	imap <a-l> <Esc>l
-	map <a-l> <Esc>l
-	imap <a-w> <Esc>w
-	map <a-w> <Esc>w
-	imap <a-e> <Esc>e
-	map <a-e> <Esc>e
-	imap <a-b> <Esc>b
-	map <a-b> <Esc>b
-	imap <a-`> <Esc>``
-	map <a-`> <Esc>``
-	" 编辑
-	inoremap <a-u> a<BS><Esc>u
-	inoremap <a-y> <Esc>yy
-	inoremap <a-d> <Esc>dd
-	inoremap <a-v> <Esc>V
-	" 插入 
-	imap <a-o> <Esc>o
-	imap <a-O> <Esc>O
-	imap <a-c> <Esc>c
-	nmap <a-c> c
-	" }}}
-" endif
-"  }}}
-" funny print {{{
-function To_buffer() " {{{
-	let _line = line('.')
-	if(_line == 9 || _line == 10 || _line == 11)
-		set modifiable
-		undo
-	else
-		echo 'Unknow place'
-	endif
-	if(_line == 10)
-		LeaderfFileFullScreen
-	elseif(_line == 11)
-		NERDTree
-	elseif(_line == 12)
-		vs
-		terminal
-	elseif(_line == 13)
-		quit!
-	endif
-endfunction "}}}
-function To_up() " {{{
-	if(line('.') > 9)
-		normal! k
-	endif
-endfunction " }}}
-function To_down() " {{{
-	if(line('.') >= 9)
-		normal! j
-	endif
-endfunction " }}}
-function Welcome() " {{{
-	" vs /home/kewth/.config/nvim/welcome
-	call append(0,'   /##   /##        /####    /#                     /##    /## ##             ')
-	call append(1,'  | ## / ##        \ #_ ##  | #                    | ##   | # |_/             ')
-	call append(2,'  \  #| ##         \ # \ ## \  #  /######  /###### | ##   | # /##/######/#### ')
-	call append(3,'   \ ###/  /#######\ ## \ ## \ # /## __ # / #____ #|  ## / ##| #| ##_  ##_  ##')
-	call append(4,'   \ #__##\_______/ \ #  \ ##| #| #######| #     \ #\  ## ## | #| ## \ ## \ ##')
-	call append(5,'   \ #  \ ##        \  #  \  # #| ##     | #     | # \  ###/ | #| ## | ## | ##')
-	call append(6,'   \ ##  \ ##       \ #   \  ##|  ######\_ #######   \  #/  | #| ## | ## | ##')
-	call append(7,'   \__/  \__/        \_/    \__/ \______/ \_______/    \_/   |__|__/ |__/ |__/        ─────Kewth')
-	call append(8,'> To clear this buffer')
-	call append(9,'> To open LeaderF which is used to serach files')
-	call append(10,'> To open NerdTree which is used to serach files on a tree')
-	call append(11,'> To open terminal')
-	call append(12,'> To exit neovim(or press q)')
-	call append(13,'Press enter(ctrl-m) at some lines to do something')
-	set nomodifiable
-	nnoremap <buffer> <CR> :call To_buffer()<CR>
-	nnoremap <buffer> q :q!<CR>
-	nnoremap <buffer> k :call To_up()<CR>
-	nnoremap <buffer> j :call To_down()<CR>
-endfunction " }}}
-exe 'autocmd VimEnter * : call Welcome()'
-    " ▄████████    ▄███████▄    ▄████████  ▄████████    ▄████████  ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄             "
-   " ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄           "
-   " ███    █▀    ███    ███   ███    ███ ███    █▀    ███    █▀  ███    ███ ███▌ ███   ███   ███           "
-   " ███          ███    ███   ███    ███ ███         ▄███▄▄▄     ███    ███ ███▌ ███   ███   ███           "
- " ▀███████████ ▀█████████▀  ▀███████████ ███        ▀▀███▀▀▀     ███    ███ ███▌ ███   ███   ███           " LAJI
-          " ███   ███          ███    ███ ███    █▄    ███    █▄  ███    ███ ███  ███   ███   ███           "
-    " ▄█    ███   ███          ███    ███ ███    ███   ███    ███ ███    ███ ███  ███   ███   ███           "
-  " ▄████████▀   ▄████▀        ███    █▀  ████████▀    ██████████  ▀██████▀  █▀    ▀█   ███   █▀            "
+" " funny print {{{
+" function To_buffer() " {{{
+" 	let _line = line('.')
+" 	if(_line == 9 || _line == 10 || _line == 11)
+" 		set modifiable
+" 		undo
+" 	else
+" 		echo 'Unknow place'
+" 	endif
+" 	if(_line == 10)
+" 		LeaderfFileFullScreen
+" 	elseif(_line == 11)
+" 		NERDTree
+" 	elseif(_line == 12)
+" 		vs
+" 		terminal
+" 	elseif(_line == 13)
+" 		quit!
+" 	endif
+" endfunction "}}}
+" function To_up() " {{{
+" 	if(line('.') > 9)
+" 		normal! k
+" 	endif
+" endfunction " }}}
+" function To_down() " {{{
+" 	if(line('.') >= 9)
+" 		normal! j
+" 	endif
+" endfunction " }}}
+" function Welcome() " {{{
+" 	" vs /home/kewth/.config/nvim/welcome
+" 	call append(0,'   /##   /##        /####    /#                     /##    /## ##             ')
+" 	call append(1,'  | ## / ##        \ #_ ##  | #                    | ##   | # |_/             ')
+" 	call append(2,'  \  #| ##         \ # \ ## \  #  /######  /###### | ##   | # /##/######/#### ')
+" 	call append(3,'   \ ###/  /#######\ ## \ ## \ # /## __ # / #____ #|  ## / ##| #| ##_  ##_  ##')
+" 	call append(4,'   \ #__##\_______/ \ #  \ ##| #| #######| #     \ #\  ## ## | #| ## \ ## \ ##')
+" 	call append(5,'   \ #  \ ##        \  #  \  # #| ##     | #     | # \  ###/ | #| ## | ## | ##')
+" 	call append(6,'   \ ##  \ ##       \ #   \  ##|  ######\_ #######   \  #/  | #| ## | ## | ##')
+" 	call append(7,'   \__/  \__/        \_/    \__/ \______/ \_______/    \_/   |__|__/ |__/ |__/        ─────Kewth')
+" 	call append(8,'> To clear this buffer')
+" 	call append(9,'> To open LeaderF which is used to serach files')
+" 	call append(10,'> To open NerdTree which is used to serach files on a tree')
+" 	call append(11,'> To open terminal')
+" 	call append(12,'> To exit neovim(or press q)')
+" 	call append(13,'Press enter(ctrl-m) at some lines to do something')
+" 	set nomodifiable
+" 	nnoremap <buffer> <CR> :call To_buffer()<CR>
+" 	nnoremap <buffer> q :q!<CR>
+" 	nnoremap <buffer> k :call To_up()<CR>
+" 	nnoremap <buffer> j :call To_down()<CR>
+" endfunction " }}}
+" exe 'autocmd VimEnter * : call Welcome()'
+"     " ▄████████    ▄███████▄    ▄████████  ▄████████    ▄████████  ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄             "
+"    " ███    ███   ███    ███   ███    ███ ███    ███   ███    ███ ███    ███ ███  ▄██▀▀▀███▀▀▀██▄           "
+"    " ███    █▀    ███    ███   ███    ███ ███    █▀    ███    █▀  ███    ███ ███▌ ███   ███   ███           "
+"    " ███          ███    ███   ███    ███ ███         ▄███▄▄▄     ███    ███ ███▌ ███   ███   ███           "
+"  " ▀███████████ ▀█████████▀  ▀███████████ ███        ▀▀███▀▀▀     ███    ███ ███▌ ███   ███   ███           " LAJI
+"           " ███   ███          ███    ███ ███    █▄    ███    █▄  ███    ███ ███  ███   ███   ███           "
+"     " ▄█    ███   ███          ███    ███ ███    ███   ███    ███ ███    ███ ███  ███   ███   ███           "
+"   " ▄████████▀   ▄████▀        ███    █▀  ████████▀    ██████████  ▀██████▀  █▀    ▀█   ███   █▀            "
 
-" }}}
+" " }}}

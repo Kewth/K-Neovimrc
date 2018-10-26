@@ -12,7 +12,7 @@
 Welcome to use K-Neovim.  
 
 ## Preview
-![Preview Neovim](https://github.com/Kewth/K-Neovimrc/tree/master/img/Neovim.png?raw=true)
+![Preview Neovim](https://raw.githubusercontent.com/Kewth/K-Neovimrc/master/img/Noevim.png)
 
 ## Install
 **First you're supposed know [what Neovim is](https://github.com/neovim/neovim) and [why you sholud use Neovim](https://geoff.greer.fm/2015/01/15/why-neovim-is-better-than-vim/).**  

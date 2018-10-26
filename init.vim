@@ -529,12 +529,13 @@ nnoremap <C-w> <Cmd>echo 'fuck'<CR>
 nnoremap <Tab> <C-w>
 nnoremap <Tab><Tab> <Tab>
 nnoremap <Leader>bo <Cmd>botright copen 8 <CR>
-nnoremap <C-l> <Cmd>edit<CR>
+nnoremap <Leader>e <Cmd>edit<CR>
 " }}}
 " Terminal {{{
 nnoremap <Leader>ba <Cmd>terminal<CR>:set nonu<CR>a
 tnoremap <C-\> <C-\><C-n>
 nnoremap <Leader>ca <Cmd>ConqueTerm bash<CR>
+tnoremap <C-h> <BS>
 " }}}
 " 分页操作 {{{
 nnoremap <Leader><Tab><Tab> <Cmd>tabnew<CR>

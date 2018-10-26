@@ -33,15 +33,18 @@ After that, you should clone this source code to your configuration directory.
 For example, if the operating system you use is Linux, just run:  
 ```
 git clone git@github.com:Kewth/K-Neovimrc
-mv -r K-Neovim ~/.config/nvim
+mv -r K-Neovimrc ~/.config/nvim
 ```
 If the operating system you use isn't that, sorry, i cannot give you any help in this version because I use Linux only.  
 
 Then run Neovim, input `:PlugInstall` and press enter, it will automatically download the plugin which you may required.  
 
 ## Usage
-If you are new to vim, run :Tutor and prees enter in neovim.  
+If you are new to vim, run `:Tutor` and prees enter in neovim.  
+
+Make sure there is such a sentence in the config.vim: `let g:k_nv_home = 'YOUR CONFIGURATION DIRECTORY'`.  
 
 K-Neovim uses Space as its Leader by defalut.  
-I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory such as: `let g:k_nv_leader = ','`(it'll use ',' as leader)  
+I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory like this: `let g:k_nv_leader = '\'`(it'll use '\' as leader)  
+
 

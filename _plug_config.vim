@@ -17,7 +17,7 @@ let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
 nnoremap <C-j> <Cmd>YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=1                 " 从第1个键入字符就开始罗列匹配项
 " let g:ycm_global_ycm_extra_conf = '/home/kewth/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' " 配置全局路径
-let g:ycm_global_ycm_extra_conf = '/home/kewth/.config/nvim/plugged/YouCompleteMe/.ycm_extra_conf.py' " 配置全局路径
+let g:ycm_global_ycm_extra_conf = g:k_nv_home . '/plugged/YouCompleteMe/.ycm_extra_conf.py' " 配置全局路径
 let g:ycm_auto_trigger = 1
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'

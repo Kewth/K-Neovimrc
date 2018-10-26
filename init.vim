@@ -463,7 +463,7 @@ set shortmess+=c
 " add 180ms delay before the omni wrapper:
 "  'on_complete': ['ncm2#on_complete#delay', 180,
 "               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-autocmd User Ncm2Plugin call ncm2#register_source({
+exe "autocmd User Ncm2Plugin call ncm2#register_source({
 			\ 'name' : 'css',
 			\ 'priority': 9, 
 			\ 'subscope_enable': 1,
@@ -472,7 +472,7 @@ autocmd User Ncm2Plugin call ncm2#register_source({
 			\ 'word_pattern': '[\w\-]+',
 			\ 'complete_pattern': ':\s*',
 			\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-			\ })
+			\ })"
 " }}}
 " Plan {{{
 let g:p_edit_files = {

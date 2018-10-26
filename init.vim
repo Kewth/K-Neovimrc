@@ -235,7 +235,13 @@ let Tlist_Use_Left_Window=1 "在Vim窗口左侧显示taglist窗口
 nmap <Leader>ta <Cmd>Tlist<CR>
 " }}}
 "MarkdownPreview {{{
-nnoremap <Leader>md <Cmd>MarkdownPreview<CR>
+function Markdown_()
+	vs
+	normal! 
+	set conceallevel=2
+	MarkdownPreview
+endfunction
+nnoremap <Leader>md <Cmd>call Markdown_()<CR>
 nnoremap <Leader>MD <Cmd>MarkdownPreviewStop<CR>
 " }}}
 " Vim-Markdown {{{
@@ -473,13 +479,6 @@ exe "autocmd User Ncm2Plugin call ncm2#register_source({
 			\ 'complete_pattern': ':\s*',
 			\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
 			\ })"
-" }}}
-" Plan {{{
-let g:p_edit_files = {
-			\ 'plan': '/home/kewth/Desktop/plan.md',
-			\ 'diary': '/home/kewth/Desktop/plan.md',
-			\}
-nnoremap <Leader>plan <Cmd>tabnew /home/kewth/Desktop/plan.md<CR>:EditPlan<CR>
 " }}}
 " GDB {{{
 noremap <Leader>gdb <Cmd>!g++ % -Wall -g<CR>:GdbStart gdb -q a.out<CR><CR><CR>b main<CR>run<CR><C-\><C-n><C-w>k:call Gdb_begin()<CR>

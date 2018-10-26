@@ -32,7 +32,7 @@ Then Download Neovim(this is the 0.3.2 version of Neovim):
 After that, you should clone this source code to your configuration directory.  
 For example, if the operating system you use is Linux, just run:  
 ```
-git clone git@github.com:Kewth/K-Neovim
+git clone git@github.com:Kewth/K-Neovimrc
 mv -r K-Neovim ~/.config/nvim
 ```
 If the operating system you use isn't that, sorry, i cannot give you any help in this version because I use Linux only.  

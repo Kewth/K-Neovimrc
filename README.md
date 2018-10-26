@@ -43,5 +43,5 @@ Then run Neovim, input `:PlugInstall` and press enter, it will automatically dow
 If you are new to vim, run :Tutor and prees enter in neovim.  
 
 K-Neovim uses Space as its Leader by defalut.  
-I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory such as: `let g:k_vim_leader = ','`(it'll use ',' as leader)  
+I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory such as: `let g:k_nv_leader = ','`(it'll use ',' as leader)  
 

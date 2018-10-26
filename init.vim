@@ -1,6 +1,7 @@
 scripte utf-8
 source ~/.config/nvim/_plug.vim
 source ~/.config/nvim/qt.vim
+source ~/.config/nvim/config.vim
 " 各种set {{{
 " 外观 {{{
 " 语法高亮
@@ -26,7 +27,11 @@ set cursorline
 " }}}
 " 编辑 {{{
 " Leader设置
-let mapleader = ' '
+if !exists('g:k_nv_leader')
+	let mapleader = ' '
+else
+	let mapleader = g:k_nv_leader
+endif
 " 缩进 {{{
 " Tab键的宽度
 set tabstop=4

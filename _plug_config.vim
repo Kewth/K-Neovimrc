@@ -1,5 +1,4 @@
 
-" vim插件 {{{
 " YCM {{{
 set runtimepath+=~/.vim/plugged/YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1           " 开启 YCM 基于标签引擎
@@ -383,4 +382,3 @@ endfunction
 let g:clever_f_across_no_line = 1
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
-" }}}

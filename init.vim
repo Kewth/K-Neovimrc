@@ -16,7 +16,7 @@ syntax on
 " set number
 " 相对行号
 " set relativenumber
-" 高亮当前行  
+" 高亮当前行
 set cursorline
 " 高亮当前列
 " set cursorcolumn
@@ -76,12 +76,16 @@ set wildmenu
 " color {{{
 syntax enable
 let g:solarized_termcolors=256
-set background=dark
+if exists('g:k_nv_light')
+	set background=light
+else
+	set background=dark
+endif
 colorscheme solarized
 " }}}
 " 开关折叠 {{{
 set foldenable
-" set foldmethod=manual " 手动折叠 
+" set foldmethod=manual " 手动折叠
 set foldmethod=marker " 按标记折叠
 " set foldmethod=syntax " 按语法高亮来折叠
 " set foldmethod=indent " 更多的缩进表示更高级别的折叠(这个似乎效果好一些)

@@ -47,4 +47,6 @@ Make sure there is such a sentence in the config.vim: `let g:k_nv_home = 'YOUR C
 K-Neovim uses Space as its Leader by defalut.  
 I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory like this: `let g:k_nv_leader = '\'`(it'll use '\' as leader)  
 
+## Plugin
+Run `:PlugStatus` in Neovim to learn what plugin there is.  
 

@@ -16,30 +16,16 @@ syntax on
 " set number
 " 相对行号
 " set relativenumber
-" 启动的时候不显示那个援助索马里儿童的提示
-" set shortmess=atI
-" 在被分割的窗口间显示空白，便于阅读
-" set fillchars=vert:\ ,stl:\ ,stlnc:\
-" 命令行（在状态行下）的高度，默认为1，这里是2
-" set cmdheight=2
-" 总是显示状态行
-" set laststatus=2
-" 我的状态行显示的内容（包括文件类型和解码）
-" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 " 高亮当前行  
 set cursorline
 " 高亮当前列
 " set cursorcolumn
 " }}}
-" 编辑 {{{
 " 缩进 {{{
 " Tab键的宽度
 set tabstop=4
 " 统一缩进为4
 set softtabstop=4
-set smarttab
-" 不要用空格代替制表符
-set noexpandtab
 " 自动缩进
 set autoindent
 " 在行和段开始处使用制表符
@@ -48,30 +34,11 @@ set shiftwidth=4
 set cindent
 set smartindent
 " }}}
-" 自动换行
-" set wrap
-" 整词换行
-" set linebreak
-"行内替换
-" set gdefault
-" 插入括号时跳转
-" set showmatch
-" 匹配括号高亮的时间（单位是十分之一秒）
-" set matchtime=1
-" 光标移动到buffer的顶部和底部时保持3行距离
-" set scrolloff=3
-" 波浪符命令 ~ 的行为类似于操作符。
-" set tildeop
-" ctrl-a和ctrl-x
-" set nrformats=alpha,hex
-" }}}
 " 内部 {{{
 " 去掉输入错误的提示声音
-set noerrorbells " noeb
+set noerrorbells
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
-" 历史记录数
-set history=1000
 " 文件备份
 set nobackup
 "禁止生成临时文件
@@ -82,7 +49,7 @@ set incsearch
 " }}}
 "语言 {{{
 "编码设置
-" set encoding=utf-8 " enc
+" set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 "语言设置
 set helplang=cn
@@ -92,9 +59,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " }}}
 "其他 {{{
-"set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
-" 在编辑过程中，在右下角显示光标位置的状态行
-" set ruler          
 " 侦测文件类型
 filetype on
 " 载入文件类型插件
@@ -105,28 +69,15 @@ filetype indent on
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
-" 字符间插入的像素行数目
-" set linespace=0
 " 增强模式中的命令行自动完成操作,命令行自动补全
 set wildmenu
-" 使回格键（backspace）正常处理indent, eol, start等
-" set backspace=2
-" 允许backspace和光标键跨越行边界
-" set whichwrap+=<,>,h,l
-" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
-" set mouse=a
-" 可视模式的行为
-set selection=inclusive " 默认
 " }}}
 " }}}
 " color {{{
 syntax enable
 let g:solarized_termcolors=256
 set background=dark
-"set background=light
 colorscheme solarized
-" colorscheme torte
-" colorscheme murphy
 " }}}
 " 开关折叠 {{{
 set foldenable
@@ -134,11 +85,7 @@ set foldenable
 set foldmethod=marker " 按标记折叠
 " set foldmethod=syntax " 按语法高亮来折叠
 " set foldmethod=indent " 更多的缩进表示更高级别的折叠(这个似乎效果好一些)
-" 用<CR>自动折叠,其实就是za
-" nnoremap <silent> <CR> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " 打开/关闭所有折叠
-nnoremap <silent> zo zR
-nnoremap <silent> zc zM
 " }}}
 " 各种map {{{
 " 窗口操作 {{{

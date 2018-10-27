@@ -50,8 +50,8 @@ There are many shortcuts that start with \<Leader\>, most are for plgins.
 
 ## Configuration
 #### Leader
-K-Neovim uses Space as its Leader by defalut neacuse it's easy to press.  
-I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory like this: `let g:k_nv_leader = '\'`(it'll use '\' as leader)  
+K-Neovim uses Space as its Leader by defalut beacuse it's easy to press.  
+I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory like this: `let g:k_nv_leader = '\'`(it'll use '\\' as leader)  
 #### colors
 K-Neovim uses [solarized]() as its color theme.  
 There're two diffenert styles of color themes, the default is dark, if you want to set it to light, add such a sentence to config.vim: `let g:k_nv_light = 1`.  

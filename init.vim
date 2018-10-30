@@ -95,7 +95,6 @@ set foldmethod=marker " 按标记折叠
 " 窗口操作 {{{
 " practice
 nnoremap <Leader>w <Cmd>up<CR>
-nnoremap <C-w> <Cmd>echo 'fuck'<CR>
 nnoremap <Tab> <C-w>
 nnoremap <Tab><Tab> <Tab>
 nnoremap <Leader>bo <Cmd>botright copen 8 <CR>

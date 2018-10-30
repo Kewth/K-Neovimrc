@@ -49,9 +49,21 @@ Run `:PlugStatus` in Neovim to learn what plugin there is.
 There are many shortcuts that start with \<Leader\>, most are for plgins.  
 
 ## Configuration
+You can make some configuration easily.  
+
 #### Leader
 K-Neovim uses Space as its Leader by defalut beacuse it's easy to press.  
 I suggest you not to change it, but if you really dislike it, you can edit config.vim in your configuration directory like this: `let g:k_nv_leader = '\'`(it'll use '\\' as leader)  
+
 #### colors
 K-Neovim uses [solarized]() as its color theme.  
 There're two diffenert styles of color themes, the default is dark, if you want to set it to light, add such a sentence to config.vim: `let g:k_nv_light = 1`.  
+
+## Mapping
+Notes, a few default buttons have been changed:  
+- `:` is mapped to `q:` so that you can edit command in vim style.  
+You can press ctrl+c after that to use the command not mapped.
+- `Tab` is mapped to `ctrl+w` so that you can switch windows quickly.  
+And twice `Tab` to use the command not mapped.  
+- In terminal mode, use `ctrl+\ ` to back to normal mode instead of `ctrl+\ + ctrl+n`.  
+- `ctrl+n` is mapped to `gj` and `ctrl+p` is mapped to `gk` in normal mode.  

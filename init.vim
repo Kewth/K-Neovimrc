@@ -124,6 +124,9 @@ cd %:p:h
 " 命令行 {{{
 nnoremap : q:a
 " }}}
+" 防误触 {{{
+noremap <C-z> <Nul>
+" }}}
 " }}}
 " " funny print {{{
 " function To_buffer() " {{{

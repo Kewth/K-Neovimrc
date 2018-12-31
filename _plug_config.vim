@@ -378,7 +378,19 @@ function Gdb_begin()
 	" nnoremap \b <Cmd>call Gdb_add_break()<CR>
 endfunction
 " }}}
-" clever-f
+" clever-f {{{
 let g:clever_f_across_no_line = 1
 map ; <Plug>(clever-f-repeat-forward)
 map , <Plug>(clever-f-repeat-back)
+" }}}
+" Clang-format {{{
+vnoremap <Leader>cl :ClangFormat<CR>
+nnoremap <Leader>cl <Cmd> %:ClangFormat<CR>
+let g:clang_format#style_options = {
+			\ 'BasedOnStyle' : 'llvm' ,
+			\ 'IndentWidth' : '4' ,
+			\ 'UseTab' : 'Always' ,
+			\ 'IndentCaseLabels' : 'true' ,
+			\ 'Standard' : 'C++11'
+			\ }
+" }}}

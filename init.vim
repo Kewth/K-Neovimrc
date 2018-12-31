@@ -101,10 +101,18 @@ nnoremap <Leader>bo <Cmd>botright copen 8 <CR>
 nnoremap <Leader>e <Cmd>edit<CR>
 " }}}
 " Terminal {{{
-nnoremap <Leader>ba <Cmd>terminal<CR>:set nonu<CR>a
+" nnoremap <Leader>ba <Cmd>terminal<CR>:set nonu<CR>a
+nnoremap <Leader>ba <Cmd>e term://zsh<CR>:set nonu<CR>a
 tnoremap <C-\> <C-\><C-n>
 nnoremap <Leader>ca <Cmd>ConqueTerm bash<CR>
 tnoremap <C-h> <BS>
+nnoremap <Leader>xsh <Cmd>e term://zsh<CR>:set nonu<CR>:call XSHinit()<CR>axsh<CR>
+function XSHinit()
+	" tnoremap <buffer> <a-h> <C-b>
+	" tnoremap <buffer> <a-l> <C-f>
+	" tnoremap <buffer> <a-j> <C-n>
+	" tnoremap <buffer> <a-k> <C-p>
+endfunction
 " }}}
 " 分页操作 {{{
 nnoremap <Leader><Tab><Tab> <Cmd>tabnew<CR>
@@ -126,6 +134,9 @@ nnoremap : q:a
 " }}}
 " 防误触 {{{
 noremap <C-z> <Nul>
+" }}}
+" Clang-format {{{
+" nnoremap <Leader>cl <Cmd> %!clang-format -style='{BasedOnStyle: llvm, IndentWidth: 4, UseTab: ForIndentation, IndentCaseLabels: true}'<CR>
 " }}}
 " }}}
 " " funny print {{{

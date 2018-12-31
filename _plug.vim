@@ -50,7 +50,10 @@ Plug '~/.config/nvim/w-vim/open_url'
 " FlyGrep
 " Plug 'wsdjeg/FlyGrep.vim'
 " GDB
-Plug 'sakhnik/nvim-gdb'
+" Plug 'sakhnik/nvim-gdb', {'do': './install.sh'}
+Plug 'sakhnik/nvim-gdb', {'branch': 'legacy'}
 " F/f/T/t
 Plug 'rhysd/clever-f.vim'
+" clang-format
+Plug 'rhysd/vim-clang-format'
 call plug#end()

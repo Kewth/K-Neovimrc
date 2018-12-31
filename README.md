@@ -33,11 +33,15 @@ After that, you should clone this source code to your configuration directory.
 For example, if the operating system you use is Linux, just run:  
 ```
 git clone git@github.com:Kewth/K-Neovimrc
-mv -r K-Neovimrc ~/.config/nvim
+mv K-Neovimrc ~/.config/nvim
+vim
+:PlugInstall
 ```
 If the operating system you use isn't that, sorry, i cannot give you any help in this version because I use Linux only.  
 
 Then run Neovim, input `:PlugInstall` and press enter, it will automatically download the plugin which you may required.  
+
+If you still want to use Vim, adding `so ~/.config/nvim/init.vim` to your .vimrc is ok.
 
 ## Usage
 If you are new to vim, run `:Tutor` and prees enter in neovim.  

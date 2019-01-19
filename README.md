@@ -33,7 +33,7 @@ After that, you should clone this source code to your configuration directory.
 For example, if the operating system you use is Linux, just run:  
 ```
 git clone git@github.com:Kewth/K-Neovimrc
-mv -r K-Neovimrc ~/.config/nvim
+mv K-Neovimrc ~/.config/nvim
 ```
 If the operating system you use isn't that, sorry, i cannot give you any help in this version because I use Linux only.  
 

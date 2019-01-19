@@ -1,7 +1,7 @@
 scripte utf-8
 call plug#begin('~/.config/nvim/plugged')
 " 大YCM
-" Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 " 快速缩进
 " Plug 'junegunn/vim-easy-align'
 " 文件检索

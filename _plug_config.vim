@@ -15,7 +15,7 @@ let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |           " 回车即选中当前项
 nnoremap <C-j> <Cmd>YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=1                 " 从第1个键入字符就开始罗列匹配项
-" let g:ycm_global_ycm_extra_conf = '/home/kewth/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' " 配置全局路径
+" let g:ycm_global_ycm_extra_conf = '/home/kewth/.config/nvim/plugged/YouCompleteMe/.ycm_extra_conf.py' " 配置全局路径
 let g:ycm_global_ycm_extra_conf = g:k_nv_home . '/plugged/YouCompleteMe/.ycm_extra_conf.py' " 配置全局路径
 let g:ycm_auto_trigger = 1
 let g:ycm_error_symbol = '>>'
@@ -110,6 +110,7 @@ nnoremap <silent> <Leader>ai <Cmd>call Airline_Change_Theme()<CR>
 " exe 'autocmd CursorHold * : call Airline_Change_Theme()' 
 " exe 'autocmd BufWritePost * : call Airline_Change_Theme()' 
 " let timer = timer_start(3000 , 'Airline_Change_Theme_Timer' , {'repeat': -1})
+" let g:airline#extensions#keymap#enabled = 1
 " }}}
 "Taglist {{{
 " let Tlist_Show_One_File=1    "只显示当前文件的tags
@@ -156,7 +157,7 @@ let g:ale_sign_warning = '⚠ '
 let g:ale_enabled = 1
 "使用clang对c和c++进行语法检查，对python使用pylint进行语法检查,etc.
 let g:ale_linters = {
-\   'c++': ['clang -pedantic -Wall'],
+\   'c++': ['clang'],
 \   'c': ['clang'],
 \   'python': ['pylint'],
 \   'markdown' : ['mdl'],
@@ -164,6 +165,32 @@ let g:ale_linters = {
 \   'Bash' : ['shellcheck'],
 \   'Vim' : ['vint'],
 \ }
+let g:ale_cpp_clang_options = '-std=c++14 -Werror' .
+\ '-Wall -Weffc++ -pedantic -ansi' .
+\ '-pedantic-errors -Wextra -Waggregate-return -Wcast-align ' .
+\ '-Wcast-qual -Wconversion ' .
+\ '-Wdisabled-optimization ' .
+\ '-Wfloat-equal -Wformat=2 ' .
+\ '-Wformat-nonliteral -Wformat-security  ' .
+\ '-Wformat-y2k ' .
+\ '-Wimplicit  -Wimport  -Winit-self  -Winline ' .
+\ '-Winvalid-pch   ' .
+\ '-Wlong-long' .
+\ '-Wmissing-field-initializers -Wmissing-format-attribute   ' .
+\ '-Wmissing-include-dirs -Wmissing-noreturn ' .
+\ '-Wpacked  -Wpadded -Wpointer-arith ' .
+\ '-Wredundant-decls ' .
+\ '-Wshadow -Wstack-protector ' .
+\ '-Wstrict-aliasing=2 -Wswitch-default ' .
+\ '-Wswitch-enum ' .
+\ '-Wunreachable-code -Wunused ' .
+\ '-Wunused-parameter ' .
+\ '-Wvariadic-macros ' .
+\ '-Wwrite-string' .
+\ '-Wctor-dtor-privacy -Wlogical-op -Wmissing-declarations -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wundef -Wno-unused' " Clang 配置
+" 使用 pylint3 而不是 pylint
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_python_pylint_executable = 'pylint3'
 " 打开或关闭
 nnoremap <Leader>ale <Cmd>ALEEnable<CR>
 nnoremap <Leader>ALE <Cmd>ALEDisable<CR>
@@ -307,7 +334,7 @@ nnoremap <Leader>uu <Plug>GitGutterUndoHunk
 " let g:gitgutter_sign_column_always = 1
 highlight SignColumn guibg=blue      " gVim/MacVim 
 " }}}
-" ?.... {{{
+" Commentary {{{
 nmap \ gc
 nmap \\ gcc
 vmap \ gc
@@ -339,9 +366,6 @@ let g:undotree_HighlightChangedText = 0
 " 靠右
 let g:undotree_WindowLayout = 4
 let g:undotree_CustomDiffpanelCmd = 'botright 5 new'
-" }}}
-" deoplete {{{
-" let g:deoplete#enable_at_startup = 1
 " }}}
 " NCM {{{
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
@@ -393,4 +417,13 @@ let g:clang_format#style_options = {
 			\ 'IndentCaseLabels' : 'true' ,
 			\ 'Standard' : 'C++11'
 			\ }
+" }}}
+" hardtime {{{
+" 自动开启
+exe 'autocmd BufEnter * : HardTimeOn'
+let g:hardtime_showmsg = 1
+let g:hardtime_allow_different_key = 1 " 允许用不同键
+let g:hardtime_maxcount = 3 " 按 3 次后触发 hardtime
+let g:list_of_normal_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
+let g:list_of_visual_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 " }}}

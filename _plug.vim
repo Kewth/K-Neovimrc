@@ -1,7 +1,7 @@
 scripte utf-8
 call plug#begin('~/.config/nvim/plugged')
 " 大YCM
-Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
+" Plug 'Valloric/YouCompleteMe' , { 'do': './install.py --clang-completer' }
 " 快速缩进
 " Plug 'junegunn/vim-easy-align'
 " 文件检索
@@ -37,10 +37,11 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'PangPangPangPangPang/vim-terminal'
 " markdown浏览
 Plug 'iamcco/markdown-preview.vim'
+" Plug 'suan/vim-instant-markdown'
 " 配色
 Plug 'altercation/vim-colors-solarized'
 " 目录结构
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 " Undo树
 Plug 'mbbill/undotree'
 " 高亮行尾空白
@@ -56,4 +57,14 @@ Plug 'sakhnik/nvim-gdb', {'branch': 'legacy'}
 Plug 'rhysd/clever-f.vim'
 " clang-format
 Plug 'rhysd/vim-clang-format'
+" Neomake
+" Plug 'neomake/neomake'
+" 强迫自己不连续按 hijl
+Plug 'takac/vim-hardtime'
+" 自定义 tab 名称
+" Plug 'gcmt/taboo.vim'
+" 预览 csv
+Plug 'chrisbra/csv.vim'
+" 光标颜色
+" Plug 'vheon/vim-cursormode'
 call plug#end()

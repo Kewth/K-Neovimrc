@@ -104,6 +104,7 @@ nnoremap <Leader>e <Cmd>edit<CR>
 " nnoremap <Leader>ba <Cmd>terminal<CR>:set nonu<CR>a
 nnoremap <Leader>ba <Cmd>e term://zsh<CR>:set nonu<CR>a
 tnoremap <C-\> <C-\><C-n>
+tnoremap <C-q> <C-\><C-n><C-w>
 nnoremap <Leader>ca <Cmd>ConqueTerm bash<CR>
 tnoremap <C-h> <BS>
 nnoremap <Leader>xsh <Cmd>e term://zsh<CR>:set nonu<CR>:call XSHinit()<CR>axsh<CR>

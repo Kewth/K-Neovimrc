@@ -58,6 +58,10 @@ set imcmdline
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 " }}}
+" 窗口 {{{
+" 关闭窗口后不重新调整窗口
+set noea
+" }}}
 "其他 {{{
 " 侦测文件类型
 filetype on

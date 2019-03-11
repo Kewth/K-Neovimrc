@@ -136,12 +136,10 @@ cd %:p:h
 " }}}
 " 命令行 {{{
 nnoremap : q:a
+nnoremap <Leader>. :<UP><CR>
 " }}}
 " 防误触 {{{
 noremap <C-z> <Nul>
-" }}}
-" Clang-format {{{
-" nnoremap <Leader>cl <Cmd> %!clang-format -style='{BasedOnStyle: llvm, IndentWidth: 4, UseTab: ForIndentation, IndentCaseLabels: true}'<CR>
 " }}}
 " }}}
 " " funny print {{{

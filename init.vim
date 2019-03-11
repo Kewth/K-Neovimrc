@@ -100,6 +100,7 @@ set foldmethod=marker " 按标记折叠
 " practice
 nnoremap <Leader>w <Cmd>up<CR>
 nnoremap <Tab> <C-w>
+nnoremap <Tab>q <C-w>q
 nnoremap <Tab><Tab> <Tab>
 nnoremap <Leader>bo <Cmd>botright copen 8 <CR>
 nnoremap <Leader>e <Cmd>edit<CR>

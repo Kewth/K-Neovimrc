@@ -427,3 +427,7 @@ let g:hardtime_maxcount = 3 " 按 3 次后触发 hardtime
 let g:list_of_normal_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 let g:list_of_visual_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 " }}}
+" Rainbow {{{
+let g:rainbow_active = 0 
+nnoremap <Leader>ra <Cmd>RainbowToggle<CR>
+" }}}

@@ -136,7 +136,7 @@ nnoremap <Leader>cd <Cmd>cd %:p:h<CR>
 cd %:p:h
 " }}}
 " 命令行 {{{
-nnoremap : q:a
+noremap : q:a
 nnoremap <Leader>. :<UP><CR>
 " }}}
 " 防误触 {{{

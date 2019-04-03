@@ -140,8 +140,11 @@ nnoremap : q:a
 nnoremap <Leader>. :<UP><CR>
 " }}}
 " 防误触 {{{
-noremap <C-z> <Nul>
+map <C-z> <Nul>
 " }}}
+" 其他
+" :help Y 查看真相，就是不与 Vi 兼容
+nnoremap Y y$
 " }}}
 " " funny print {{{
 " function To_buffer() " {{{

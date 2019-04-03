@@ -67,4 +67,6 @@ Plug 'takac/vim-hardtime'
 Plug 'chrisbra/csv.vim'
 " 光标颜色
 " Plug 'vheon/vim-cursormode'
+" 彩虹括号
+Plug 'luochen1990/rainbow'
 call plug#end()

@@ -112,7 +112,7 @@ nnoremap <silent> <Leader>ai <Cmd>call Airline_Change_Theme()<CR>
 " let timer = timer_start(3000 , 'Airline_Change_Theme_Timer' , {'repeat': -1})
 " let g:airline#extensions#keymap#enabled = 1
 " }}}
-"Taglist {{{
+" Taglist {{{
 " let Tlist_Show_One_File=1    "只显示当前文件的tags
 let Tlist_WinWidth=30        "设置taglist宽度
 let Tlist_Exit_OnlyWindow=1  "tagList窗口是最后一个窗口，则退出Vim
@@ -120,13 +120,7 @@ let Tlist_Use_Left_Window=1 "在Vim窗口左侧显示taglist窗口
 nmap <Leader>ta <Cmd>Tlist<CR>
 " }}}
 "MarkdownPreview {{{
-function Markdown_()
-	vs
-	normal! 
-	set conceallevel=2
-	MarkdownPreview
-endfunction
-nnoremap <Leader>md <Cmd>call Markdown_()<CR>
+nnoremap <Leader>md <Cmd>MarkdownPreview<CR>
 nnoremap <Leader>MD <Cmd>MarkdownPreviewStop<CR>
 " }}}
 " Vim-Markdown {{{
@@ -143,7 +137,7 @@ let g:vim_markdown_fenced_languages = [
 let g:vim_markdown_math = 1
 " 高亮jekyll
 let g:vim_markdown_frontmatter = 1
-" 按ge跳转链接时自动保存  
+" 按ge跳转链接时自动保存
 let g:vim_markdown_autowrite = 1
 " }}}
 " ale {{{
@@ -226,19 +220,6 @@ let g:Lf_PreviewResult = {
 			\ 'Colorscheme': 1
 			\}
 let g:Lf_ExternalCommand = 'find "%s" -maxdepth 3 -type f 2> /dev/null'           " On MacOSX/Linux
-" }}}
-" minibufexpl插件的一般设置 {{{
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-" }}}
-" Ag {{{
-command! -bang -nargs=* Ag
-			\ call fzf#vim#ag(<q-args>,
-			\ <bang>0 ? fzf#vim#with_preview('up:60%')
-			\ : fzf#vim#with_preview('right:50%:hidden', '?'),
-			\ <bang>0)
 " }}}
 " incsearch {{{
 map /  <Plug>(incsearch-forward)
@@ -379,7 +360,7 @@ set shortmess+=c
 "               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
 exe "autocmd User Ncm2Plugin call ncm2#register_source({
 			\ 'name' : 'css',
-			\ 'priority': 9, 
+			\ 'priority': 9,
 			\ 'subscope_enable': 1,
 			\ 'scope': ['css','scss'],
 			\ 'mark': 'css',
@@ -403,9 +384,13 @@ function Gdb_begin()
 endfunction
 " }}}
 " clever-f {{{
-let g:clever_f_across_no_line = 1
-map ; <Plug>(clever-f-repeat-forward)
-map , <Plug>(clever-f-repeat-back)
+let g:clever_f_across_no_line = 0 " 允许换行
+let g:clever_f_smart_case = 1 " 智能大小写
+let g:clever_f_fix_key_direction = 1 " f 永远往右，F 永远往左
+let g:clever_f_show_prompt = 1 " 提示符
+let g:clever_f_repeat_last_char_inputs = ['.'] " . 重复上次操作
+nnoremap ; <Nul>
+nnoremap , <Nul>
 " }}}
 " Clang-format {{{
 vnoremap <Leader>cl :ClangFormat<CR>
@@ -428,6 +413,6 @@ let g:list_of_normal_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<R
 let g:list_of_visual_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 " }}}
 " Rainbow {{{
-let g:rainbow_active = 0 
+let g:rainbow_active = 0
 nnoremap <Leader>ra <Cmd>RainbowToggle<CR>
 " }}}

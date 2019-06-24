@@ -69,4 +69,6 @@ Plug 'chrisbra/csv.vim'
 " Plug 'vheon/vim-cursormode'
 " 彩虹括号
 Plug 'luochen1990/rainbow'
+" Coc
+" Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 call plug#end()

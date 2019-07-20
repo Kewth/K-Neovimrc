@@ -182,9 +182,9 @@ let g:ale_cpp_clang_options = '-std=c++14 -Werror' .
 \ '-Wvariadic-macros ' .
 \ '-Wwrite-string' .
 \ '-Wctor-dtor-privacy -Wlogical-op -Wmissing-declarations -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wundef -Wno-unused' " Clang 配置
-" 使用 pylint3 而不是 pylint
 let g:ale_javascript_eslint_use_global = 1
-let g:ale_python_pylint_executable = 'pylint3'
+" 使用 pylint3 而不是 pylint
+" let g:ale_python_pylint_executable = 'pylint3'
 " 打开或关闭
 nnoremap <Leader>ale <Cmd>ALEEnable<CR>
 nnoremap <Leader>ALE <Cmd>ALEDisable<CR>
@@ -405,7 +405,7 @@ let g:clang_format#style_options = {
 " }}}
 " hardtime {{{
 " 自动开启
-exe 'autocmd BufEnter * : HardTimeOn'
+" exe 'autocmd BufEnter * : HardTimeOn'
 let g:hardtime_showmsg = 1
 let g:hardtime_allow_different_key = 1 " 允许用不同键
 let g:hardtime_maxcount = 3 " 按 3 次后触发 hardtime

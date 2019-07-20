@@ -60,7 +60,7 @@ Plug 'rhysd/vim-clang-format'
 " Neomake
 " Plug 'neomake/neomake'
 " 强迫自己不连续按 hijl
-Plug 'takac/vim-hardtime'
+" Plug 'takac/vim-hardtime'
 " 自定义 tab 名称
 " Plug 'gcmt/taboo.vim'
 " 预览 csv

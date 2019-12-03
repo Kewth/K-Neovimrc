@@ -51,10 +51,10 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}  
 endif  
 let g:airline_left_alt_sep = '»'
-let g:airline_left_sep = '▶'
+let g:airline_left_sep = '' " '▶'
 " let g:airline_left_sep = '▷'
 let g:airline_right_alt_sep = '«'
-let g:airline_right_sep = '◀'
+let g:airline_right_sep = '' " '◀'
 let g:airline_symbols.crypt = '🔒'
 " let g:airline_symbols.linenr = '☰'
 " let g:airline_symbols.linenr = '␊'
@@ -194,13 +194,17 @@ nnoremap <Leader>AA <Cmd>ALEPrevious<CR>
 " }}}
 " LeaderF {{{
 " nmap <Leader>fi <Cmd>LeaderfFile<CR>
-nnoremap <Leader>fu <Cmd>LeaderfFunctionAll<CR>
-nnoremap <Leader>bt <Cmd>LeaderfBufTagAll<CR>
-nnoremap <Leader>bu <Cmd>LeaderfBufferAll<CR>
+nnoremap <Leader>fu <Cmd>LeaderfFunction<CR>
+nnoremap <Leader>bt <Cmd>LeaderfBufTag<CR>
+nnoremap <Leader>bu <Cmd>LeaderfBuffer<CR>
 nnoremap <Leader>co <Cmd>LeaderfColorscheme<CR>
 nnoremap <Leader>fm <Cmd>LeaderfMru<CR>
-nnoremap <Leader>li <Cmd>LeaderfLineAll<CR>
-let g:Lf_CommandMap = {'<F5>': ['<C-l>']}
+nnoremap <Leader>li <Cmd>LeaderfLine<CR>
+let g:Lf_CommandMap = {
+			\ '<F5>': ['<C-l>'],
+			\ '<C-J>': ['<C-N>'],
+			\ '<C-K>': ['<C-P>'],
+			\ }
 let g:Lf_ShortcutF = '<Leader>fi'
 let g:Lf_NumberOfHighlight = 200
 let g:Lf_MruMaxFiles = 200 " 最大标记数量
@@ -210,9 +214,9 @@ let g:Lf_StlColorscheme = 'powerline' " 颜色主题
 let g:Lf_StlSeparator = { 'left': '', 'right': ''} " 标记字符
 let g:Lf_PreviewCode = 1 " 预览tag
 let g:Lf_PreviewResult = {
-			\ 'File': 1,
-			\ 'Buffer': 1,
-			\ 'Mru': 1,
+			\ 'File': 0,
+			\ 'Buffer': 0,
+			\ 'Mru': 0,
 			\ 'Tag': 1,
 			\ 'BufTag': 1,
 			\ 'Function': 1,

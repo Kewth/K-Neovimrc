@@ -136,12 +136,20 @@ nnoremap <Leader>cd <Cmd>cd %:p:h<CR>
 cd %:p:h
 " }}}
 " 命令行 {{{
-noremap : q:a
+noremap : :<C-F>a
+noremap / /<C-F>a
+noremap ? ?<C-F>a
 nnoremap <Leader>. :<UP><CR>
 " }}}
 " 防误触 {{{
 map <C-z> <Nul>
 " }}}
+" em
+nnoremap ` '
+nnoremap ' `
+" 一键打题模式
+nnoremap <Leader>o <Cmd>vs %:r.log<CR><Cmd>sp %:r.out<CR><Cmd>sp %:r.in<CR><C-w>=
+nnoremap <Leader>O <Cmd>vs log<CR><Cmd>sp out<CR><Cmd>sp in<CR><C-w>=
 " 其他
 " :help Y 查看真相，就是不与 Vi 兼容
 nnoremap Y y$

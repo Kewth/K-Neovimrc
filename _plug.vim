@@ -11,7 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'iamcco/mathjax-support-for-mkdp'
 " markdown高亮缩进和补全
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 " 加强搜索功能
 Plug 'haya14busa/incsearch.vim'
 " incsearch扩展

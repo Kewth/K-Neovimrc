@@ -7,11 +7,11 @@ call plug#begin('~/.config/nvim/plugged')
 " 文件检索
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
-" markdown的LeTax支持
-Plug 'iamcco/mathjax-support-for-mkdp'
 " markdown高亮缩进和补全
 Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 " Plug 'plasticboy/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
 " 加强搜索功能
 Plug 'haya14busa/incsearch.vim'
 " incsearch扩展
@@ -35,8 +35,11 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Plug 'Yggdroot/LeaderF-marks'
 " 打开内嵌终端
 " Plug 'PangPangPangPangPang/vim-terminal'
+" markdown的LeTax支持
+Plug 'iamcco/mathjax-support-for-mkdp'
 " markdown浏览
-Plug 'iamcco/markdown-preview.vim'
+" Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " Plug 'suan/vim-instant-markdown'
 " 配色
 Plug 'altercation/vim-colors-solarized'
@@ -47,7 +50,8 @@ Plug 'mbbill/undotree'
 " 高亮行尾空白
 Plug 'bronson/vim-trailing-whitespace'
 " 打开网页
-Plug '~/.config/nvim/w-vim/open_url'
+" Plug '~/.config/nvim/w-vim/open_url'
+Plug 'tyru/open-browser.vim'
 " FlyGrep
 " Plug 'wsdjeg/FlyGrep.vim'
 " GDB
@@ -71,4 +75,15 @@ Plug 'chrisbra/csv.vim'
 Plug 'luochen1990/rainbow'
 " Coc
 " Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+" 补全
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'xavierd/clang_complete'
+" 文言
+Plug 'voldikss/vim-wenyan'
+" 补全
+" Plug 'zxqfl/tabnine-vim'
+" 更加全面的 python 语法高亮
+Plug 'vim-python/python-syntax'
+" latex 实时预览
+Plug 'lervag/vimtex'
 call plug#end()

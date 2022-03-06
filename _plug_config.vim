@@ -44,34 +44,34 @@ let g:ycm_semantic_triggers = {
 " }}}
 " vim-airline {{{
 set laststatus=2  "永远显示状态栏
-let g:airline_powerline_fonts = 1  
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 " TAb line
-let g:airline_theme='jellybeans'  
-if !exists('g:airline_symbols')  
-    let g:airline_symbols = {}  
-endif  
-let g:airline_left_alt_sep = '»'
-let g:airline_left_sep = '' " '▶'
-" let g:airline_left_sep = '▷'
-let g:airline_right_alt_sep = '«'
-let g:airline_right_sep = '' " '◀'
-let g:airline_symbols.crypt = '🔒'
-" let g:airline_symbols.linenr = '☰'
-" let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
-" let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.linenr = '༒ '
-" let g:airline_symbols.linenr = '☯'
-let g:airline_symbols.maxlinenr = '──㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.readonly = '⎇Read'
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ>'
-let g:airline_symbols.space = ' ' " '\ua0'  
+let g:airline_theme='jellybeans'
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
+" let g:airline_left_alt_sep = '»'
+" let g:airline_left_sep = '' " '▶'
+" " let g:airline_left_sep = '▷'
+" let g:airline_right_alt_sep = '«'
+" let g:airline_right_sep = '' " '◀'
+" let g:airline_symbols.crypt = '🔒'
+" " let g:airline_symbols.linenr = '☰'
+" " let g:airline_symbols.linenr = '␊'
+" " let g:airline_symbols.linenr = '␤'
+" " let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.linenr = '༒ '
+" " let g:airline_symbols.linenr = '☯'
+" let g:airline_symbols.maxlinenr = '──㏑'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.readonly = '⎇Read'
+" " let g:airline_symbols.paste = 'ρ'
+" " let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.spell = 'Ꞩ'
+" let g:airline_symbols.notexists = 'Ɇ'
+" let g:airline_symbols.whitespace = 'Ξ>'
+" let g:airline_symbols.space = ' ' " '\ua0'  
 let g:airline_exclude_filename = []  
 let g:Powerline_symbols='fancy'  
 let Powerline_symbols='fancy'  
@@ -102,7 +102,7 @@ function! Airline_Change_Theme()
 		AirlineTheme light
 	endif
 endfunction
-function Airline_Change_Theme_Timer(timer) 
+function Airline_Change_Theme_Timer(timer)
 	:call Airline_Change_Theme()
 endfunction
 nnoremap <silent> <Leader>ai <Cmd>call Airline_Change_Theme()<CR>
@@ -120,8 +120,14 @@ let Tlist_Use_Left_Window=1 "在Vim窗口左侧显示taglist窗口
 nmap <Leader>ta <Cmd>Tlist<CR>
 " }}}
 "MarkdownPreview {{{
-nnoremap <Leader>md <Cmd>MarkdownPreview<CR>
-nnoremap <Leader>MD <Cmd>MarkdownPreviewStop<CR>
+" nnoremap <Leader>md <Cmd>MarkdownPreview<CR>
+" nnoremap <Leader>MD <Cmd>MarkdownPreviewStop<CR>
+nmap <Leader>md <Plug>MarkdownPreview
+nmap <Leader>MD <Plug>MarkdownPreviewStop
+" 允许使用 newcommand 之类的全局设置
+let g:mkdp_preview_options = {
+			\ 'katex': {'globalGroup': v:true}
+			\ }
 " }}}
 " Vim-Markdown {{{
 " 代码块高亮
@@ -135,6 +141,8 @@ let g:vim_markdown_fenced_languages = [
 			\ ]
 " 高亮Latex
 let g:vim_markdown_math = 1
+" 取消自动折叠
+let g:vim_markdown_folding_disabled = 1
 " 高亮jekyll
 let g:vim_markdown_frontmatter = 1
 " 按ge跳转链接时自动保存
@@ -158,30 +166,44 @@ let g:ale_linters = {
 \   'HTML' : ['tidy'],
 \   'Bash' : ['shellcheck'],
 \   'Vim' : ['vint'],
+\   'tex' : ['chktex'],
 \ }
-let g:ale_cpp_clang_options = '-std=c++14 -Werror' .
-\ '-Wall -Weffc++ -pedantic -ansi' .
-\ '-pedantic-errors -Wextra -Waggregate-return -Wcast-align ' .
-\ '-Wcast-qual -Wconversion ' .
-\ '-Wdisabled-optimization ' .
-\ '-Wfloat-equal -Wformat=2 ' .
-\ '-Wformat-nonliteral -Wformat-security  ' .
-\ '-Wformat-y2k ' .
-\ '-Wimplicit  -Wimport  -Winit-self  -Winline ' .
-\ '-Winvalid-pch   ' .
-\ '-Wlong-long' .
-\ '-Wmissing-field-initializers -Wmissing-format-attribute   ' .
-\ '-Wmissing-include-dirs -Wmissing-noreturn ' .
-\ '-Wpacked  -Wpadded -Wpointer-arith ' .
-\ '-Wredundant-decls ' .
-\ '-Wshadow -Wstack-protector ' .
-\ '-Wstrict-aliasing=2 -Wswitch-default ' .
-\ '-Wswitch-enum ' .
-\ '-Wunreachable-code -Wunused ' .
-\ '-Wunused-parameter ' .
-\ '-Wvariadic-macros ' .
-\ '-Wwrite-string' .
-\ '-Wctor-dtor-privacy -Wlogical-op -Wmissing-declarations -Wnoexcept -Wold-style-cast -Woverloaded-virtual -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wundef -Wno-unused' " Clang 配置
+let g:ale_cpp_clang_options = '-std=c++17 -Weverything ' .
+\ '-Wno-unused-macros ' .
+\ '-Wno-c++98-compat-pedantic ' .
+\ '-Wno-comma ' .
+\ '-Wno-shadow-field-in-constructor ' .
+\ '-Wno-missing-prototypes ' .
+\ '-Wno-global-constructors ' .
+\ '-Wno-missing-variable-declarations ' .
+\ '-Wno-exit-time-destructors ' .
+\ '-Wno-unknown-pragmas ' .
+\ '-Wno-old-style-cast '
+" let g:ale_cpp_clang_options = '-std=c++14 -Werror' .
+" \ '-Wall -Weffc++ -pedantic -ansi' .
+" \ '-pedantic-errors -Wextra -Waggregate-return -Wcast-align ' .
+" \ '-Wcast-qual -Wconversion ' .
+" \ '-Wdisabled-optimization ' .
+" \ '-Wfloat-equal -Wformat=2 ' .
+" \ '-Wformat-nonliteral -Wformat-security  ' .
+" \ '-Wformat-y2k ' .
+" \ '-Wimplicit  -Wimport  -Winit-self  -Winline ' .
+" \ '-Winvalid-pch   ' .
+" \ '-Wlong-long' .
+" \ '-Wmissing-field-initializers -Wmissing-format-attribute   ' .
+" \ '-Wmissing-include-dirs -Wmissing-noreturn ' .
+" \ '-Wpacked  -Wpadded -Wpointer-arith ' .
+" \ '-Wredundant-decls ' .
+" \ '-Wshadow -Wstack-protector ' .
+" \ '-Wstrict-aliasing=2 -Wswitch-default ' .
+" \ '-Wswitch-enum ' .
+" \ '-Wunreachable-code -Wunused ' .
+" \ '-Wunused-parameter ' .
+" \ '-Wvariadic-macros ' .
+" \ '-Wwrite-string' .
+" \ '-Wunused-function' .
+" \ '-Wctor-dtor-privacy -Wlogical-op -Wmissing-declarations -Wold-style-cast -Woverloaded-virtual -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wundef ' " Clang 配置
+let g:ale_cpp_cc_options = g:ale_cpp_clang_options " 为了某次更新后的兼容
 let g:ale_javascript_eslint_use_global = 1
 " 使用 pylint3 而不是 pylint
 " let g:ale_python_pylint_executable = 'pylint3'
@@ -239,23 +261,23 @@ map g# <Plug>(incsearch-nohl-g#)
 map z/ <Plug>(incsearch-easymotion-/)
 map z? <Plug>(incsearch-easymotion-?)
 map zg/ <Plug>(incsearch-easymotion-stay)
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzy#converter()],
-  \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-function! s:noregexp(pattern) abort
-  return '\V' . escape(a:pattern, '\')
-endfunction
-function! s:config() abort
-  return {'converters': [function('s:noregexp')]}
-endfunction
-noremap <silent><expr> z/ incsearch#go(<SID>config())
+" function! s:config_easyfuzzymotion(...) abort
+"   return extend(copy({
+"   \   'converters': [incsearch#config#fuzzy#converter()],
+"   \   'modules': [incsearch#config#easymotion#module()],
+"   \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+"   \   'is_expr': 0,
+"   \   'is_stay': 1
+"   \ }), get(a:, 1, {}))
+" endfunction
+" noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+" function! s:noregexp(pattern) abort
+"   return '\V' . escape(a:pattern, '\')
+" endfunction
+" function! s:config() abort
+"   return {'converters': [function('s:noregexp')]}
+" endfunction
+" noremap <silent><expr> z/ incsearch#go(<SID>config())
 " }}}
 " DrawIt {{{
 let g:jsq_for_drawit = 3
@@ -419,4 +441,27 @@ let g:list_of_visual_keys = ['h', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<R
 " Rainbow {{{
 let g:rainbow_active = 0
 nnoremap <Leader>ra <Cmd>RainbowToggle<CR>
+" }}}
+" deoplete {{{
+" let g:deoplete#enable_at_startup = 1
+" " path to directory where library can be found
+" let g:clang_library_path='/usr/lib/llvm/lib'
+" " or path directly to the library file
+" let g:clang_library_path='/usr/lib64/libclang.so.9'
+" }}}
+" python-syntax {{{
+let g:python_highlight_all = 1 " 开启
+" }}}
+" vimtex {{{
+let g:vimtex_view_method = 'zathura'
+" 关闭默认映射
+" let g:vimtex_imaps_enabled = 0
+let g:vimtex_mappings_enabled = 0
+" 保留部分映射
+imap ]] <plug>(vimtex-delim-close)
+nmap <Leader>ll <plug>(vimtex-compile)
+" }}}
+" open-browser {{{
+nnoremap <Leader>go <Cmd>call openbrowser#_keymap_open('n')<CR>
+" https://google.com
 " }}}

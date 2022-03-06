@@ -39,7 +39,7 @@ set smartindent
 set noerrorbells
 " 在处理未保存或只读文件的时候，弹出确认
 set confirm
-" 文件备份
+" 文件备份（备份的是写入前的文件）
 set nobackup
 "禁止生成临时文件
 set noswapfile
@@ -99,6 +99,7 @@ set foldmethod=marker " 按标记折叠
 " 窗口操作 {{{
 " practice
 nnoremap <Leader>w <Cmd>up<CR>
+nnoremap <Leader><Space>w <Cmd>w<CR>
 nnoremap <Tab> <C-w>
 nnoremap <Tab>q <C-w>q
 nnoremap <Tab><Tab> <Tab>
@@ -141,15 +142,27 @@ noremap / /<C-F>a
 noremap ? ?<C-F>a
 nnoremap <Leader>. :<UP><CR>
 " }}}
-" 防误触 {{{
+" 防误触/防机惨 {{{
 map <C-z> <Nul>
+" nnoremap :w<CR> <Cmd>!i3lock<CR>
+" nnoremap :wq<CR> <Cmd>!i3lock<CR>
+" nnoremap :w!<CR> <Cmd>!i3lock<CR>
+" nnoremap :q<CR> <Cmd>!i3lock<CR>
+" }}}
+" latex 公式{{{
+inoremap <C-L>lim \lim\limits_
+inoremap <C-L>eps \varepsilon
+inoremap <C-L>al( \begin{aligned}
+inoremap <C-L>al) \end{aligned}
+inoremap <C-L>cal \mathcal
+inoremap <C-L>bb \mathbb
 " }}}
 " em
 nnoremap ` '
 nnoremap ' `
 " 一键打题模式
-nnoremap <Leader>o <Cmd>vs %:r.log<CR><Cmd>sp %:r.out<CR><Cmd>sp %:r.in<CR><C-w>=
-nnoremap <Leader>O <Cmd>vs log<CR><Cmd>sp out<CR><Cmd>sp in<CR><C-w>=
+nnoremap <Leader>o <Cmd>vs %:r.log<CR><Cmd>sp %:r.out<CR><Cmd>sp %:r.in<CR><C-w>l<C-w>H<C-w>=
+nnoremap <Leader>O <Cmd>vs log<CR><Cmd>sp out<CR><Cmd>sp in<CR><C-w>l<C-w>H<C-w>=
 " 其他
 " :help Y 查看真相，就是不与 Vi 兼容
 nnoremap Y y$
@@ -208,3 +221,20 @@ nnoremap Y y$
 " endfunction " }}}
 " exe 'autocmd VimEnter * : call Welcome()'
 " " }}}
+
+" 自动备份
+function s:Make_Dir ()
+	if strlen (finddir (a:Path)) == 0
+		call mkdir (a:Path, "p")
+endfunction Make_Dir
+function s:To_Backup_File (Backup_Root, File_Path, File_Name)
+	let l:Backup_Path = a:Backup_Root . '/' . a:File_Path
+	if strlen (finddir (l:Backup_Path)) == 0
+		call mkdir (l:Backup_Path, "p")
+	endif
+	exe 'write!' . l:Backup_Path . '/' . a:File_Name
+endfunction Backup_File
+autocmd BufWritePre * :call s:To_Backup_File (
+	\ '/home/kewth/.vimbackup',
+	\ expand('<afile>:p:h'),
+	\ expand('<afile>:p:t') )
